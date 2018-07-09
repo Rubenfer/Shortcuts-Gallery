@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UITableViewController {
 
-    let url = URL(string: "https://sharecuts.app/api/shortcuts/latest")
     var shortcuts: DiscoverShortcuts?
     
     override func viewDidLoad() {
@@ -18,37 +17,29 @@ class ViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 70
-        getData()
+        shortcuts = Utils().getShortcuts()
         tableView.reloadData()
     }
     
-    func getData() {
-        let dispatchGroup = DispatchGroup()
-        dispatchGroup.enter()
-        if let url = url {
-            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-                if error != nil {
-                    print(error!)
-                } else {
-                    if let data = data {
-                        do {
-                            self.shortcuts = try JSONDecoder().decode(DiscoverShortcuts.self, from: data)
-                        } catch {
-                            print(error.localizedDescription)
-                        }
-                    }
-                    dispatchGroup.leave()
-                }
-            }
-            task.resume()
+    @IBAction func searchBtn(_ sender: Any) {
+        let alert = UIAlertController(title: "Search Shortcuts", message: "", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: { (textField) in
+            textField.placeholder = "Text to search"
+        })
+        let searchAction = UIAlertAction(title: "Search", style: .default) { Void in
+            let textToSearch = alert.textFields?.first?.text
+            self.shortcuts = Utils().searchShortcuts(keyword: textToSearch!)
+            self.tableView.reloadData()
         }
-        dispatchGroup.wait()
+        alert.addAction(searchAction)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
     }
 
 }
 
 
-extension ViewController { //TableView config
+extension ViewController { // TableView config
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -73,28 +64,7 @@ extension ViewController { //TableView config
         let alert = UIAlertController(title: "Do you want to add this shortcut?", message: "This shortcut have \(shortcuts?.results[indexPath.row].actionCount ?? 0) actions", preferredStyle: .alert)
         let addBtn = UIAlertAction(title: "Yes", style: .default) { Void in
             let shortcutID = self.shortcuts?.results[indexPath.row].id
-            let shortcutDetailURL = "https://sharecuts.app/api/shortcuts/" + shortcutID!
-            var shortcutDetail: ShortcutDetail!
-            let dispatchGroup = DispatchGroup()
-            dispatchGroup.enter()
-            if let url = URL(string: shortcutDetailURL) {
-                let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-                    if error != nil {
-                        print(error!)
-                    } else {
-                        if let data = data {
-                            do {
-                                shortcutDetail = try JSONDecoder().decode(ShortcutDetail.self, from: data)
-                            } catch {
-                                print(error.localizedDescription)
-                            }
-                        }
-                        dispatchGroup.leave()
-                    }
-                }
-                task.resume()
-            }
-            dispatchGroup.wait()
+            let shortcutDetail = Utils().getShortcutDetail(id: shortcutID!)
             let deepLink = URL(string: shortcutDetail.deepLink)
             UIApplication.shared.open(deepLink!, options: [:], completionHandler: nil)
         }

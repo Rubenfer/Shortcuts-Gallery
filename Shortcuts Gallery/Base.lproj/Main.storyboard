@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fnF-G4-Rew">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fnF-G4-Rew">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14270.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -48,7 +48,13 @@
                             <outlet property="delegate" destination="1r4-gA-ERp" id="1wE-CR-0a2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Shortcuts" id="aie-q4-k6L"/>
+                    <navigationItem key="navigationItem" title="Shortcuts" id="aie-q4-k6L">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="clh-6j-vJd">
+                            <connections>
+                                <action selector="searchBtn:" destination="1r4-gA-ERp" id="3vb-Vw-sij"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a9c-hy-nF4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
