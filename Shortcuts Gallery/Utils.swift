@@ -67,6 +67,7 @@ class Utils {
             return getShortcuts()
         } else {
             #warning("Waiting to search feature release")
+            
             return getShortcuts()
         }
     }

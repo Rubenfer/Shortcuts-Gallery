@@ -38,7 +38,6 @@ class ViewController: UITableViewController {
 
 }
 
-
 extension ViewController { // TableView config
     
     override func numberOfSections(in tableView: UITableView) -> Int {
