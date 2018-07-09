@@ -12,6 +12,7 @@
 		0C06062E20F352FE0003B3E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C06062C20F352FE0003B3E8 /* Main.storyboard */; };
 		0C06063020F352FE0003B3E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C06062F20F352FE0003B3E8 /* Assets.xcassets */; };
 		0C06063320F352FE0003B3E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C06063120F352FE0003B3E8 /* LaunchScreen.storyboard */; };
+		0C46497E20F3535000FEC6E6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C46497D20F3535000FEC6E6 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		0C06062F20F352FE0003B3E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C06063220F352FE0003B3E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0C06063420F352FE0003B3E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C46497D20F3535000FEC6E6 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				0C06062820F352FE0003B3E8 /* AppDelegate.swift */,
+				0C46497D20F3535000FEC6E6 /* Model.swift */,
 				0C06062A20F352FE0003B3E8 /* ViewController.swift */,
 				0C06062C20F352FE0003B3E8 /* Main.storyboard */,
 				0C06062F20F352FE0003B3E8 /* Assets.xcassets */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C46497E20F3535000FEC6E6 /* Model.swift in Sources */,
 				0C06062B20F352FE0003B3E8 /* ViewController.swift in Sources */,
 				0C06062920F352FE0003B3E8 /* AppDelegate.swift in Sources */,
 			);
@@ -283,6 +287,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M92GJ8T2S2;
 				INFOPLIST_FILE = "Shortcuts Gallery/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,6 +306,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M92GJ8T2S2;
 				INFOPLIST_FILE = "Shortcuts Gallery/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
